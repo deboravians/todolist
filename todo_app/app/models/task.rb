@@ -8,6 +8,15 @@ class Task < ApplicationRecord
 
   before_save :sync_completed_at
 
+  scope :pending_tasks, -> { where(status: statuses[:pending]) }
+  scope :in_progress_tasks, -> { where(status: statuses[:in_progress]) }
+  scope :completed_tasks, -> { where(status: statuses[:completed]) }
+
+  scope :overdue, -> {
+    where("due_date < ?", Time.current)
+      .where.not(status: statuses[:completed])
+  }
+
   private
 
   def sync_completed_at
