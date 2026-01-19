@@ -1,0 +1,17 @@
+<h1>Tarefas da lista: <%= @list.title %></h1>
+
+<p><%= link_to "Nova tarefa", new_board_list_task_path(@board, @list) %></p>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= link_to task.title, board_list_task_path(@board, @list, task) %>
+      | <%= link_to "Editar", edit_board_list_task_path(@board, @list, task) %>
+      | <%= button_to "Excluir", board_list_task_path(@board, @list, task), method: :delete, data: { confirm: "Tem certeza?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to "Voltar para listas", board_lists_path(@board) %>
+</p>

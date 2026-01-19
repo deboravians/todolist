@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :boards do
-    resources :lists
+    resources :lists do
+      resources :tasks
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
