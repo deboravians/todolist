@@ -1,0 +1,15 @@
+<h1>Listas do <%= @board.title %></h1>
+
+<p><%= link_to "Nova lista", new_board_list_path(@board) %></p>
+
+<ul>
+  <% @lists.each do |list| %>
+    <li>
+      <%= link_to list.title, board_list_path(@board, list) %>
+      | <%= link_to "Editar", edit_board_list_path(@board, list) %>
+      | <%= button_to "Excluir", board_list_path(@board, list), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Voltar para quadros", boards_path %></p>
