@@ -1,0 +1,15 @@
+<%= form_with model: [@board, @list, @task] do |f| %>
+  <div>
+    <%= f.label :title, "Título" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Descrição" %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
