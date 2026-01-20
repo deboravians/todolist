@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_board
   before_action :set_list
   before_action :set_task, only: %i[show edit update destroy]
@@ -41,10 +42,6 @@ class TasksController < ApplicationController
   end
 
   private
-
-  def current_user
-    User.find_by!(email: "dev@local")
-  end
 
   def set_board
     @board = current_user.boards.find(params[:board_id])
