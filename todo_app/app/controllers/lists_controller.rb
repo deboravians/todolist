@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_board
   before_action :set_list, only: %i[show edit update destroy]
 
@@ -51,9 +52,5 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:title)
-  end
-
-  def current_user
-    User.find_by!(email: "dev@local")
   end
 end

@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_board, only: %i[show edit update destroy]
 
   def index
@@ -39,10 +40,6 @@ class BoardsController < ApplicationController
   end
 
   private
-
-  def current_user
-    User.find_by!(email: "dev@local")
-  end
 
   def set_board
     @board = current_user.boards.find(params[:id])

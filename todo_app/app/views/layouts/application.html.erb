@@ -23,7 +23,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <nav style="display:flex; gap: 12px; margin-bottom: 16px;">
+    <% if user_signed_in? %>
+      <span>Logado como: <%= current_user.email %></span>
+      <%= button_to "Sair", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Entrar", new_user_session_path %>
+      <%= link_to "Cadastrar", new_user_registration_path %>
+    <% end %>
+  </nav>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</body>
 </html>
