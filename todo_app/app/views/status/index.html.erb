@@ -1,0 +1,45 @@
+<div class="page">
+  <%= render "shared/topbar", active: :status %>
+
+  <div class="kanban-grid">
+    <div class="kanban-col">
+      <div class="kanban-col-head">
+        <span>Em atraso</span>
+        <span class="pill pill-red">0</span>
+      </div>
+      <div class="kanban-col-body">
+        <p class="muted center">Nenhuma tarefa</p>
+      </div>
+    </div>
+
+    <div class="kanban-col">
+      <div class="kanban-col-head">
+        <span>Pendente</span>
+        <span class="pill pill-purple">0</span>
+      </div>
+      <div class="kanban-col-body">
+        <p class="muted center">Nenhuma tarefa</p>
+      </div>
+    </div>
+
+    <div class="kanban-col">
+      <div class="kanban-col-head">
+        <span>Em andamento</span>
+        <span class="pill pill-yellow">0</span>
+      </div>
+      <div class="kanban-col-body">
+        <p class="muted center">Nenhuma tarefa</p>
+      </div>
+    </div>
+
+    <div class="kanban-col">
+      <div class="kanban-col-head">
+        <span>Concluído</span>
+        <span class="pill pill-gray">0</span>
+      </div>
+      <div class="kanban-col-body">
+        <p class="muted center">Nenhuma tarefa</p>
+      </div>
+    </div>
+  </div>
+</div>

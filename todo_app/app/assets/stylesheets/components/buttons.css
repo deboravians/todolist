@@ -1,0 +1,38 @@
+.btn{
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-orange{ background: var(--c-orange); color: #fff; }
+.btn-purple{ background: var(--c-purple-1); color: #fff; }
+.btn-red{ background: var(--c-red); color: #fff; }
+
+.btn-wide{ width: 100%; }
+
+.icon-btn{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--c-yellow);
+  background: #fff;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.icon-btn-danger{
+  border-color: var(--c-red);
+}

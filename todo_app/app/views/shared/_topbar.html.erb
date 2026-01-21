@@ -1,0 +1,42 @@
+<% active ||= :boards %>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-title">
+      <h1><%= active == :boards ? "Meus Quadros" : "Visão Kanban" %></h1>
+      <p>Olá, <%= current_user.name.presence || current_user.email %>!</p>
+    </div>
+
+    <div class="topbar-controls">
+      <div class="switcher" role="tablist" aria-label="Alternar visualização">
+        <%= link_to boards_path, class: "switcher-btn #{active == :boards ? "is-active" : ""}" do %>
+          <%= image_tag "icons/boards.svg", class: "icon", alt: "" %>
+          Quadros
+        <% end %>
+        <%= link_to status_path, class: "switcher-btn #{active == :status ? "is-active" : ""}" do %>
+          <%= image_tag "icons/status.svg", class: "icon", alt: "" %>
+          Status
+        <% end %>
+      </div>
+
+      <% if active == :boards %>
+        <%= link_to new_board_path, class: "btn btn-orange" do %>
+          <%= image_tag "icons/plus.svg", class: "icon", alt: "" %>
+          Novo Quadro
+        <% end %>
+      <% else %>
+        <a class="btn btn-orange">
+          <%= image_tag "icons/plus.svg", class: "icon", alt: "" %>
+          Nova tarefa
+        </a>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-red" do %>
+      <%= image_tag "icons/logout.svg", class: "icon", alt: "Sair" %>
+      Sair
+    <% end %>
+  </div>
+</div>
