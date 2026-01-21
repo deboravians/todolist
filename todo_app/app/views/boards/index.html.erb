@@ -28,12 +28,28 @@
           <div class="board-card-actions">
             <%= link_to "Abrir", board_path(board), class: "btn btn-purple btn-wide" %>
 
-            <%= link_to edit_board_path(board), class: "icon-btn", title: "Editar" do %><%= image_tag "icons/edit.svg", class: "icon", alt: "Editar" %><% end %>
+            <button type="button"
+              class="icon-btn"
+              title="Editar"
+              data-open-edit-board
+              data-board-id="<%= board.id %>"
+              data-board-title="<%= board.title %>">
+              <%= image_tag "icons/edit.svg", class: "icon", alt: "" %>
+            </button>
 
-            <%= button_to board_path(board), method: :delete, class: "icon-btn icon-btn-danger", title: "Excluir" do %><%= image_tag "icons/trash.svg", class: "icon", alt: "Excluir" %><% end %>
+            <button type="button"
+              class="icon-btn icon-btn-danger"
+              title="Excluir"
+              data-open-delete-board
+              data-board-id="<%= board.id %>"
+              data-board-title="<%= board.title %>">
+              <%= image_tag "icons/trash.svg", class: "icon", alt: "" %>
+            </button>
+
           </div>
         </div>
       <% end %>
     </div>
   <% end %>
+  <%= render "modals" %>
 </div>

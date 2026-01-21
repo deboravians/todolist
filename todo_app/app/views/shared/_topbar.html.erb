@@ -20,10 +20,10 @@
       </div>
 
       <% if active == :boards %>
-        <%= link_to new_board_path, class: "btn btn-orange" do %>
+        <button type="button" class="btn btn-orange" data-open-create-board>
           <%= image_tag "icons/plus.svg", class: "icon", alt: "" %>
           Novo Quadro
-        <% end %>
+        </button>
       <% else %>
         <a class="btn btn-orange">
           <%= image_tag "icons/plus.svg", class: "icon", alt: "" %>

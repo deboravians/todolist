@@ -25,6 +25,8 @@
     <%= stylesheet_link_tag "components/buttons", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "components/cards", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "components/topbar", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "components/modal", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "components/flash", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "features/boards", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "features/status", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -32,6 +34,14 @@
   </head>
 
 <body>
+  <% if notice.present? %>
+    <div class="flash flash-notice"><%= notice %></div>
+  <% end %>
+
+  <% if alert.present? %>
+    <div class="flash flash-alert"><%= alert %></div>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>

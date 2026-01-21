@@ -17,7 +17,7 @@ class BoardsController < ApplicationController
     @board = current_user.boards.new(board_params)
 
     if @board.save
-      redirect_to @board, notice: "Quadro criado com sucesso."
+      redirect_to boards_path, notice: "Quadro criado com sucesso."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
-      redirect_to @board, notice: "Quadro atualizado com sucesso."
+      redirect_to boards_path, notice: "Quadro atualizado com sucesso."
     else
       render :edit, status: :unprocessable_entity
     end
