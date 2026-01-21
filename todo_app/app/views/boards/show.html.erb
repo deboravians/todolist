@@ -1,3 +1,75 @@
-<h1><%= @board.title %></h1>
+<div class="page">
+  <div class="board-header">
+    <div class="board-header-left">
+      <%= link_to boards_path, class: "btn btn-light" do %>
+        <%= image_tag "icons/back.svg", class: "icon", alt: "" %>
+        Voltar
+      <% end %>
 
-<p><%= link_to "Voltar", boards_path %></p>
+      <h1 class="board-title"><%= @board.title %></h1>
+    </div>
+
+    <div class="board-header-right">
+      <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-red" do %>
+        <%= image_tag "icons/logout.svg", class: "icon", alt: "Sair" %>
+        Sair
+      <% end %>
+    </div>
+  </div>
+
+  <div class="board-actions">
+    <button type="button" class="btn btn-orange" data-open-create-list>
+      <%= image_tag "icons/plus.svg", class: "icon", alt: "" %>
+      Nova Lista
+    </button>
+  </div>
+
+  <% if @lists.blank? %>
+    <div class="empty-state">
+      <p>Este quadro ainda não tem listas. Crie uma lista para começar a adicionar tarefas!</p>
+    </div>
+  <% else %>
+    <div class="lists-grid">
+      <% @lists.each do |list| %>
+        <div class="list-card">
+          <div class="list-card-header">
+            <h3 class="list-title"><%= list.title %></h3>
+
+            <div class="list-actions">
+              <button type="button"
+                class="icon-btn"
+                title="Editar"
+                data-open-edit-list
+                data-board-id="<%= @board.id %>"
+                data-list-id="<%= list.id %>"
+                data-list-title="<%= list.title %>">
+                <%= image_tag "icons/edit.svg", class: "icon", alt: "" %>
+              </button>
+
+              <button type="button"
+                class="icon-btn icon-btn-danger"
+                title="Excluir"
+                data-open-delete-list
+                data-board-id="<%= @board.id %>"
+                data-list-id="<%= list.id %>"
+                data-list-title="<%= list.title %>">
+                <%= image_tag "icons/trash.svg", class: "icon", alt: "" %>
+              </button>
+            </div>
+          </div>
+
+          <%= link_to new_board_list_task_path(@board, list), class: "btn btn-purple btn-wide" do %>
+            <%= image_tag "icons/plus.svg", class: "icon", alt: "" %>
+            Nova tarefa
+          <% end %>
+
+          <div class="list-empty">
+            Nenhuma tarefa nesta lista
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= render "lists/modals" %>
+</div>

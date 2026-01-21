@@ -2,4 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "modal_boards"
+import "modal_lists"
 import "flash"

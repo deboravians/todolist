@@ -18,7 +18,7 @@ class ListsController < ApplicationController
     @list = @board.lists.new(list_params)
 
     if @list.save
-      redirect_to [@board, @list], notice: "Lista criada com sucesso."
+      redirect_to @board, notice: "Lista criada com sucesso."
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to [@board, @list], notice: "Lista atualizada com sucesso."
+      redirect_to @board, notice: "Lista atualizada com sucesso."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to board_lists_path(@board), notice: "Lista excluída com sucesso."
+    redirect_to @board, notice: "Lista excluída com sucesso."
   end
 
   private
