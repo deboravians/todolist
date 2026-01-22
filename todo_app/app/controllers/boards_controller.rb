@@ -1,36 +1,30 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_board, only: %i[show edit update destroy]
+  before_action :set_board, only: %i[show update destroy]
 
   def index
     @boards = current_user.boards.order(created_at: :desc)
   end
 
   def show
-  end
-
-  def new
-    @board = Board.new
+    @lists = @board.lists.order(created_at: :asc)
   end
 
   def create
     @board = current_user.boards.new(board_params)
 
     if @board.save
-      redirect_to @board, notice: "Quadro criado com sucesso."
+      redirect_to boards_path, notice: "Quadro criado com sucesso."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to boards_path, alert: @board.errors.full_messages.to_sentence
     end
-  end
-
-  def edit
   end
 
   def update
     if @board.update(board_params)
-      redirect_to @board, notice: "Quadro atualizado com sucesso."
+      redirect_to boards_path, notice: "Quadro atualizado com sucesso."
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to boards_path, alert: @board.errors.full_messages.to_sentence
     end
   end
 

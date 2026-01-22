@@ -1,0 +1,73 @@
+.page{
+  min-height: 100vh;
+  background: var(--c-bg);
+  color: var(--c-text);
+  padding: 28px 28px 40px;
+}
+
+.topbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.topbar-left{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.topbar-title h1{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.topbar-title p{
+  margin: 4px 0 0 0;
+  color: var(--c-muted);
+  font-size: 13px;
+}
+
+.topbar-controls{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.switcher{
+  background: var(--c-card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 10px;
+  padding: 4px;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.switcher-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  min-width: 88px;
+  padding: 0 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--c-text);
+  font-size: 12px;
+  font-weight: 700;
+  opacity: .75;
+  gap: 2px;
+}
+
+.switcher-btn.is-active{
+  background: var(--c-purple-1);
+  opacity: 1;
+}
+
+.topbar-right{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

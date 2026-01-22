@@ -1,0 +1,127 @@
+.auth-body{
+  background: var(--c-bg);
+  overflow: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.auth-page{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card{
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px 36px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+
+.auth-title{
+  margin: 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+}
+
+.auth-subtitle{
+  margin: 8px 0 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--c-text-3);
+}
+
+.auth-form{
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.auth-label{
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.auth-input{
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  background: var(--c-field);
+  border-radius: 10px;
+  padding: 12px 14px;
+  outline: none;
+}
+
+.auth-input:focus{
+  border-color: var(--c-purple-2);
+  box-shadow: 0 0 0 3px rgba(89,42,158,.20);
+  background: #f1f1f1;
+}
+
+.auth-button{
+  margin-top: 6px;
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: var(--c-orange);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-button:hover{ opacity: .95; }
+.auth-button:active{ opacity: .90; }
+
+.auth-footer{
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: #111;
+}
+
+.auth-link{
+  color: var(--c-purple-3);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.auth-errors{
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid rgba(225,101,0,.25);
+  background: rgba(225,101,0,.08);
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.auth-errors ul{
+  margin: 8px 0 0 18px;
+}
+
+.auth-flash{
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, calc(100% - 32px));
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #fff;
+  z-index: 999;
+}
+
+.auth-flash--notice{
+  background: rgba(89,42,158,.85);
+}
+
+.auth-flash--alert{
+  background: rgba(225,101,0,.85);
+}

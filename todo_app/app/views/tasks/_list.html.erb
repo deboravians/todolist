@@ -1,0 +1,9 @@
+<div class="tasks">
+  <% if list.tasks.any? %>
+    <% list.tasks.order(created_at: :desc).each do |task| %>
+      <%= render "tasks/card", board: board, list: list, task: task %>
+    <% end %>
+  <% else %>
+    <div class="list-empty">Nenhuma tarefa nesta lista</div>
+  <% end %>
+</div>

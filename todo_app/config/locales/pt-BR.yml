@@ -1,0 +1,21 @@
+pt-BR:
+  devise:
+    failure:
+      unauthenticated: "Você precisa entrar ou se cadastrar antes de continuar."
+      user:
+        unauthenticated: "Você precisa entrar ou se cadastrar antes de continuar."
+
+  activerecord:
+    attributes:
+      task:
+        status:
+          pending: "Pendente"
+          in_progress: "Em andamento"
+          completed: "Concluída"
+        priority:
+          low: "Baixa"
+          medium: "Média"
+          high: "Alta"
+
+  tasks:
+    overdue: "Em atraso"

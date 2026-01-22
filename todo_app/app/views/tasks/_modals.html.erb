@@ -1,0 +1,122 @@
+<!-- Modal: Criar Tarefa -->
+<dialog id="modal-create-task" class="modal">
+  <div class="modal-card">
+    <h2 class="modal-title">Criar nova tarefa</h2>
+    <p class="modal-subtitle">Adicione uma nova tarefa à lista</p>
+
+    <form id="form-create-task" class="modal-form" method="post" data-turbo="true">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+      <div>
+        <label class="modal-label">Título da Tarefa</label>
+        <input name="task[title]" class="modal-input" placeholder="Nome da tarefa" required>
+      </div>
+
+      <div>
+        <label class="modal-label">Descrição (Opcional)</label>
+        <input name="task[description]" class="modal-input" placeholder="Descrição da tarefa...">
+      </div>
+
+      <div class="modal-row">
+        <div>
+          <label class="modal-label">Status</label>
+          <select name="task[status]" class="modal-input">
+            <option value="pending"><%= I18n.t("activerecord.attributes.task.status.pending") %></option>
+            <option value="in_progress"><%= I18n.t("activerecord.attributes.task.status.in_progress") %></option>
+            <option value="completed"><%= I18n.t("activerecord.attributes.task.status.completed") %></option>
+          </select>
+        </div>
+
+        <div>
+          <label class="modal-label">Prioridade</label>
+          <select name="task[priority]" class="modal-input">
+            <option value="low"><%= I18n.t("activerecord.attributes.task.priority.low") %></option>
+            <option value="medium"><%= I18n.t("activerecord.attributes.task.priority.medium") %></option>
+            <option value="high"><%= I18n.t("activerecord.attributes.task.priority.high") %></option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="modal-label">Prazo (Opcional)</label>
+        <input type="date" name="task[due_date]" class="modal-input">
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline btn-lg" data-close-modal>Cancelar</button>
+        <button type="submit" class="btn btn-orange btn-lg">Criar Tarefa</button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<dialog id="modal-edit-task" class="modal">
+  <div class="modal-card">
+    <h2 class="modal-title">Editar tarefa</h2>
+    <p class="modal-subtitle">Altere os dados da tarefa</p>
+
+    <form id="form-edit-task" class="modal-form" method="post" data-turbo="true">
+      <input type="hidden" name="_method" value="patch">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+      <div>
+        <label class="modal-label">Título da Tarefa</label>
+        <input id="edit-task-title" name="task[title]" class="modal-input" required>
+      </div>
+
+      <div>
+        <label class="modal-label">Descrição (Opcional)</label>
+        <input id="edit-task-description" name="task[description]" class="modal-input">
+      </div>
+
+      <div class="modal-row">
+        <div>
+          <label class="modal-label">Status</label>
+          <select id="edit-task-status" name="task[status]" class="modal-input">
+            <option value="pending"><%= I18n.t("activerecord.attributes.task.status.pending") %></option>
+            <option value="in_progress"><%= I18n.t("activerecord.attributes.task.status.in_progress") %></option>
+            <option value="completed"><%= I18n.t("activerecord.attributes.task.status.completed") %></option>
+          </select>
+        </div>
+
+        <div>
+          <label class="modal-label">Prioridade</label>
+          <select id="edit-task-priority" name="task[priority]" class="modal-input">
+            <option value="low"><%= I18n.t("activerecord.attributes.task.priority.low") %></option>
+            <option value="medium"><%= I18n.t("activerecord.attributes.task.priority.medium") %></option>
+            <option value="high"><%= I18n.t("activerecord.attributes.task.priority.high") %></option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="modal-label">Prazo (Opcional)</label>
+        <input id="edit-task-due-date" type="date" name="task[due_date]" class="modal-input">
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline btn-lg" data-close-modal>Cancelar</button>
+        <button type="submit" class="btn btn-orange btn-lg">Salvar</button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<dialog id="modal-delete-task" class="modal">
+  <div class="modal-card">
+    <h2 class="modal-title">Confirmar exclusão</h2>
+
+    <p class="modal-danger">
+      Tem certeza que deseja excluir a tarefa "<span id="delete-task-title"></span>"?
+      Esta ação não pode ser desfeita.
+    </p>
+
+    <form id="form-delete-task" class="modal-actions" method="post" data-turbo="true">
+      <input type="hidden" name="_method" value="delete">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+      <button type="button" class="btn btn-outline btn-lg" data-close-modal>Cancelar</button>
+      <button type="submit" class="btn btn-red btn-lg">Excluir</button>
+    </form>
+  </div>
+</dialog>

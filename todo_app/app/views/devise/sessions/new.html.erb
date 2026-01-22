@@ -1,0 +1,23 @@
+<div class="auth-card">
+  <h1 class="auth-title">Gerenciador de Tarefas</h1>
+  <p class="auth-subtitle">Organize suas tarefas de forma intuitiva</p>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
+    <div>
+      <%= f.label :email, "Email", class: "auth-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "auth-input" %>
+    </div>
+
+    <div>
+      <%= f.label :password, "Senha", class: "auth-label" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "auth-input" %>
+    </div>
+
+    <%= f.submit "Entrar", class: "auth-button" %>
+  <% end %>
+
+  <div class="auth-footer">
+    Ainda não tem uma conta?
+    <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "auth-link" %>
+  </div>
+</div>

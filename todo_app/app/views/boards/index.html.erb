@@ -1,13 +1,55 @@
-<h1>Quadros</h1>
+<div class="page">
+  <%= render "shared/topbar", active: :boards %>
 
-<p><%= link_to "Novo quadro", new_board_path %></p>
+  <% if @boards.blank? %>
+    <div class="empty-state">
+      <p>Você ainda não tem quadros. Crie seu primeiro quadro para começar!</p>
+    </div>
+  <% else %>
+    <div class="boards-grid">
+      <% @boards.each do |board| %>
+        <div class="board-card">
+          <div class="board-card-top">
+            <div>
+              <h3><%= board.title %></h3>
+              <p class="muted">
+                Criado em <%= board.created_at.strftime("%d/%m/%Y") %>
+              </p>
+            </div>
 
-<ul>
-  <% @boards.each do |board| %>
-    <li>
-      <%= link_to board.title, board_path(board) %>
-      | <%= link_to "Editar", edit_board_path(board) %>
-      | <%= button_to "Excluir", board_path(board), method: :delete, data: { confirm: "Tem certeza?" } %>
-    </li>
+            <div class="muted board-tasks">
+              <%= image_tag "icons/lists-icon.svg", class: "icon", alt: "" %>
+              <span>
+                <%= board.lists.count %> listas
+              </span>
+            </div>
+          </div>
+
+          <div class="board-card-actions">
+            <%= link_to "Abrir", board_path(board), class: "btn btn-purple btn-wide" %>
+
+            <button type="button"
+              class="icon-btn"
+              title="Editar"
+              data-open-edit-board
+              data-board-id="<%= board.id %>"
+              data-board-title="<%= board.title %>">
+              <%= image_tag "icons/edit.svg", class: "icon", alt: "" %>
+            </button>
+
+            <button type="button"
+              class="icon-btn icon-btn-danger"
+              title="Excluir"
+              data-open-delete-board
+              data-board-id="<%= board.id %>"
+              data-board-title="<%= board.title %>">
+              <%= image_tag "icons/trash.svg", class: "icon", alt: "" %>
+            </button>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-</ul>
+  <%= render "modals" %>
+</div>

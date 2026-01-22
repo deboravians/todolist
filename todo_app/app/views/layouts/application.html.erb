@@ -19,23 +19,31 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "base/reset", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "base/tokens", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "base/utilities", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "components/buttons", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "components/cards", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "components/topbar", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "components/modal", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "components/flash", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "features/boards", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "features/status", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "features/board_show", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "features/tasks", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
 <body>
-  <nav style="display:flex; gap: 12px; margin-bottom: 16px;">
-    <% if user_signed_in? %>
-      <span>Logado como: <%= current_user.email %></span>
-      <%= button_to "Sair", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Entrar", new_user_session_path %>
-      <%= link_to "Cadastrar", new_user_registration_path %>
-    <% end %>
-  </nav>
+  <% if notice.present? %>
+    <div class="flash flash-notice"><%= notice %></div>
+  <% end %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if alert.present? %>
+    <div class="flash flash-alert"><%= alert %></div>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>

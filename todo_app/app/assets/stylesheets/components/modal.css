@@ -1,0 +1,81 @@
+.modal{
+  border: none;
+  padding: 0;
+  margin: auto;
+  width: min(520px, calc(100% - 48px));
+  border-radius: 18px;
+  background: transparent;
+}
+
+.modal::backdrop{
+  background: rgba(0,0,0,.55);
+}
+
+.modal-card{
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 32px; 
+  box-shadow: 0 16px 40px rgba(0,0,0,.35);
+}
+
+.modal-title{
+  margin: 0;
+  font-size: 20px; 
+  font-weight: 800;
+}
+
+.modal-subtitle{
+  margin-top: 6px;
+  font-size: 13px;
+  color: #7a7a7a;
+  line-height: 1.4;
+}
+
+.modal-form{ margin-top: 18px; }
+
+.modal-label{
+  display:block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modal-input{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--c-field);
+  font-size: 13px;
+}
+
+.modal-actions{
+  margin-top: 18px;
+  display:flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-lg{
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.btn-outline{
+  background: #fff;
+  border: 1.5px solid #2b2b2b;
+}
+
+.btn-orange{
+  background: var(--c-orange);
+  color: #fff;
+}
+
+.modal-danger{
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--c-text-3);
+}

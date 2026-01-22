@@ -1,0 +1,82 @@
+.board-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.board-header-left{
+  display:flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.board-title{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--c-text);
+}
+
+.board-header-right{
+  display:flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-light{
+  background: #fff;
+  color: #111;
+}
+
+.board-actions{
+  margin-top: 16px;
+}
+
+.lists-grid{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1000px){
+  .lists-grid{ grid-template-columns: repeat(2, minmax(280px, 1fr)); }
+}
+@media (max-width: 680px){
+  .lists-grid{ grid-template-columns: 1fr; }
+}
+
+.list-card{
+  background: var(--c-card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.list-card-header{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.list-title{
+  margin: 0;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--c-text);
+}
+
+.list-actions{
+  display:flex;
+  gap: 8px;
+}
+
+.list-empty{
+  margin-top: 18px;
+  color: var(--c-text-2);
+  font-size: 12px;
+  text-align: center;
+}

@@ -1,43 +1,29 @@
 class ListsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_board
-  before_action :set_list, only: %i[show edit update destroy]
-
-  def index
-    @lists = @board.lists
-  end
-
-  def show
-  end
-
-  def new
-    @list = @board.lists.new
-  end
+  before_action :set_list, only: %i[update destroy]
 
   def create
     @list = @board.lists.new(list_params)
 
     if @list.save
-      redirect_to [@board, @list], notice: "Lista criada com sucesso."
+      redirect_to @board, notice: "Lista criada com sucesso."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to @board, alert: @list.errors.full_messages.to_sentence
     end
-  end
-
-  def edit
   end
 
   def update
     if @list.update(list_params)
-      redirect_to [@board, @list], notice: "Lista atualizada com sucesso."
+      redirect_to @board, notice: "Lista atualizada com sucesso."
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to @board, alert: @list.errors.full_messages.to_sentence
     end
   end
 
   def destroy
     @list.destroy
-    redirect_to board_lists_path(@board), notice: "Lista excluída com sucesso."
+    redirect_to @board, notice: "Lista excluída com sucesso."
   end
 
   private
