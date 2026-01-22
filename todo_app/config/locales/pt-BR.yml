@@ -1,4 +1,10 @@
 pt-BR:
+  devise:
+    failure:
+      unauthenticated: "Você precisa entrar ou se cadastrar antes de continuar."
+      user:
+        unauthenticated: "Você precisa entrar ou se cadastrar antes de continuar."
+
   activerecord:
     attributes:
       task:
@@ -10,5 +16,6 @@ pt-BR:
           low: "Baixa"
           medium: "Média"
           high: "Alta"
+
   tasks:
     overdue: "Em atraso"

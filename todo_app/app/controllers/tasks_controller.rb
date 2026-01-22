@@ -2,18 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_board
   before_action :set_list
-  before_action :set_task, only: %i[show edit update destroy]
-
-  def index
-    @tasks = @list.tasks.order(created_at: :desc)
-  end
-
-  def show
-  end
-
-  def new
-    @task = @list.tasks.new
-  end
+  before_action :set_task, only: %i[update destroy]
 
   def create
     @task = @list.tasks.new(task_params)
@@ -21,25 +10,21 @@ class TasksController < ApplicationController
     if @task.save
       redirect_back fallback_location: board_path(@board), notice: "Tarefa criada com sucesso."
     else
-      redirect_back fallback_location: board_path(@board), alert: "Não foi possível criar a tarefa."
+      redirect_back fallback_location: board_path(@board),
+                    alert: @task.errors.full_messages.to_sentence
     end
   end
 
-  def edit
-  end
-
   def update
-    @task = @list.tasks.find(params[:id])
-
     if @task.update(task_params)
       redirect_back fallback_location: board_path(@board), notice: "Tarefa atualizada com sucesso."
     else
-      redirect_back fallback_location: board_path(@board), alert: "Não foi possível atualizar a tarefa."
+      redirect_back fallback_location: board_path(@board),
+                    alert: @task.errors.full_messages.to_sentence
     end
   end
 
   def destroy
-    @task = @list.tasks.find(params[:id])
     @task.destroy
     redirect_back fallback_location: board_path(@board), notice: "Tarefa excluída com sucesso."
   end

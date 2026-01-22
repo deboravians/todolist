@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   get "/status", to: "status#index", as: :status
 
-  resources :boards do
-    resources :lists do
-      resources :tasks
+  resources :boards, only: %i[index show create update destroy] do
+    resources :lists, only: %i[create update destroy] do
+      resources :tasks, only: %i[create update destroy]
     end
   end
 
