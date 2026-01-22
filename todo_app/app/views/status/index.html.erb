@@ -5,41 +5,70 @@
     <div class="kanban-col">
       <div class="kanban-col-head">
         <span>Em atraso</span>
-        <span class="pill pill-red">0</span>
+        <span class="pill pill-red"><%= @overdue_tasks.size %></span>
       </div>
+
       <div class="kanban-col-body">
-        <p class="muted center">Nenhuma tarefa</p>
+        <% if @overdue_tasks.any? %>
+          <div class="tasks">
+            <%= render partial: "tasks/card", collection: @overdue_tasks, as: :task %>
+          </div>
+        <% else %>
+          <p class="muted center">Nenhuma tarefa</p>
+        <% end %>
       </div>
     </div>
 
     <div class="kanban-col">
       <div class="kanban-col-head">
         <span>Pendente</span>
-        <span class="pill pill-purple">0</span>
+        <span class="pill pill-purple"><%= @pending_tasks.size %></span>
       </div>
+
       <div class="kanban-col-body">
-        <p class="muted center">Nenhuma tarefa</p>
+        <% if @pending_tasks.any? %>
+          <div class="tasks">
+            <%= render partial: "tasks/card", collection: @pending_tasks, as: :task %>
+          </div>
+        <% else %>
+          <p class="muted center">Nenhuma tarefa</p>
+        <% end %>
       </div>
     </div>
 
     <div class="kanban-col">
       <div class="kanban-col-head">
         <span>Em andamento</span>
-        <span class="pill pill-yellow">0</span>
+        <span class="pill pill-yellow"><%= @in_progress_tasks.size %></span>
       </div>
+
       <div class="kanban-col-body">
-        <p class="muted center">Nenhuma tarefa</p>
+        <% if @in_progress_tasks.any? %>
+          <div class="tasks">
+            <%= render partial: "tasks/card", collection: @in_progress_tasks, as: :task %>
+          </div>
+        <% else %>
+          <p class="muted center">Nenhuma tarefa</p>
+        <% end %>
       </div>
     </div>
 
     <div class="kanban-col">
       <div class="kanban-col-head">
         <span>Concluído</span>
-        <span class="pill pill-gray">0</span>
+        <span class="pill pill-gray"><%= @completed_tasks.size %></span>
       </div>
+
       <div class="kanban-col-body">
-        <p class="muted center">Nenhuma tarefa</p>
+        <% if @completed_tasks.any? %>
+          <div class="tasks">
+            <%= render partial: "tasks/card", collection: @completed_tasks, as: :task %>
+          </div>
+        <% else %>
+          <p class="muted center">Nenhuma tarefa</p>
+        <% end %>
       </div>
     </div>
   </div>
+  <%= render "tasks/modals" %>
 </div>

@@ -19,9 +19,9 @@ class TasksController < ApplicationController
     @task = @list.tasks.new(task_params)
 
     if @task.save
-      redirect_to board_path(@board), notice: "Tarefa criada com sucesso."
+      redirect_back fallback_location: board_path(@board), notice: "Tarefa criada com sucesso."
     else
-      render :new, status: :unprocessable_entity
+      redirect_back fallback_location: board_path(@board), alert: "Não foi possível criar a tarefa."
     end
   end
 
@@ -29,16 +29,19 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task = @list.tasks.find(params[:id])
+
     if @task.update(task_params)
-      redirect_to board_path(@board), notice: "Tarefa atualizada com sucesso."
+      redirect_back fallback_location: board_path(@board), notice: "Tarefa atualizada com sucesso."
     else
-      render :edit, status: :unprocessable_entity
+      redirect_back fallback_location: board_path(@board), alert: "Não foi possível atualizar a tarefa."
     end
   end
 
   def destroy
+    @task = @list.tasks.find(params[:id])
     @task.destroy
-    redirect_to board_path(@board), notice: "Tarefa excluída com sucesso."
+    redirect_back fallback_location: board_path(@board), notice: "Tarefa excluída com sucesso."
   end
 
   private

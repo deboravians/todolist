@@ -13,7 +13,8 @@ class Task < ApplicationRecord
   scope :completed_tasks, -> { where(status: statuses[:completed]) }
 
   scope :overdue, -> {
-    where("due_date < ?", Time.current)
+    where.not(due_date: nil)
+      .where("due_date < ?", Date.current)
       .where.not(status: statuses[:completed])
   }
 

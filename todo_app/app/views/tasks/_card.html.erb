@@ -1,3 +1,6 @@
+<% board ||= task.list.board %>
+<% list  ||= task.list %>
+
 <% overdue = task.due_date.present? && task.due_date.to_date < Date.current && !task.completed? %>
 
 <div class="task <%= "is-completed" if task.completed? %>">
