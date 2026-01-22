@@ -1,0 +1,113 @@
+.tasks{ margin-top: 10px; display: grid; gap: 10px; }
+
+.task{
+  background: var(--c-task);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px;
+  padding: 10px 10px 12px;
+}
+
+.task.is-completed{
+  opacity: .75;
+}
+
+.task.is-completed .task-title{
+  text-decoration: line-through;
+}
+
+.task-top{
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.task-title{
+  font-weight: 900;
+  font-size: 12px;
+  color: var(--c-text);
+}
+
+.task-desc{
+  font-weight: 500;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--c-text-2);
+}
+
+.task-actions{ display:flex; gap: 6px; }
+
+.task-icon{
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+  color: #fff;
+  cursor: pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-weight: 900;
+}
+
+.task-icon-danger{
+  background: rgba(255,0,0,.14);
+  border-color: rgba(255,0,0,.25);
+}
+
+.task-tags{
+  margin-top: 10px;
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.tag-priority-low{ background: var(--c-purple-1); }
+.tag-priority-medium{ background: var(--c-purple-2); }
+.tag-priority-high{ background: var(--c-purple-3); }
+
+.tag-status-pending{ background: rgba(255,255,255,.22); color: #fff; }
+.tag-status-in_progress{ background: var(--c-yellow); color: #111; }
+.tag-status-completed{ background: var(--c-green); color: #fff; }
+
+.tag-overdue{ background: #ff0000; color: #fff; }
+
+.task-meta{
+  margin-top: 8px;
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: rgba(233,237,247,.60);
+}
+
+.meta-item{
+  display: inline-flex;
+  align-items: center;     
+  gap: 4px;                
+  line-height: 1;          
+}
+
+.meta-icon{
+  width: 14px;
+  height: 14px;
+  display: inline-block; 
+  flex: 0 0 auto;
+}
+
+.modal-row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}

@@ -1,0 +1,78 @@
+<% overdue = task.due_date.present? && task.due_date.to_date < Date.current && !task.completed? %>
+
+<div class="task <%= "is-completed" if task.completed? %>">
+  <div class="task-top">
+    <div class="task-title">
+      <%= task.title %>
+
+      <% if task.description.present? %>
+        <div class="task-desc"><%= task.description %></div>
+      <% end %>
+    </div>
+
+    <div class="task-actions">
+      <%= button_to board_list_task_path(board, list, task),
+            method: :patch,
+            params: { task: { status: task.completed? ? "pending" : "completed" } },
+            class: "task-icon",
+            title: task.completed? ? "Marcar como pendente" : "Concluir" do %>
+        <%= image_tag(task.completed? ? "icons/checked.svg" : "icons/unchecked.svg", class: "icon", alt: "") %>
+      <% end %>
+
+      <button type="button"
+              class="task-icon"
+              title="Editar"
+              data-open-edit-task
+              data-board-id="<%= board.id %>"
+              data-list-id="<%= list.id %>"
+              data-task-id="<%= task.id %>"
+              data-title="<%= task.title %>"
+              data-description="<%= task.description.to_s %>"
+              data-status="<%= task.status %>"
+              data-priority="<%= task.priority %>"
+              data-due-date="<%= task.due_date&.to_date %>">
+        <%= image_tag "icons/edit.svg", class: "icon", alt: "Editar" %>
+      </button>
+
+      <button type="button"
+              class="task-icon task-icon-danger"
+              title="Excluir"
+              data-open-delete-task
+              data-board-id="<%= board.id %>"
+              data-list-id="<%= list.id %>"
+              data-task-id="<%= task.id %>"
+              data-title="<%= task.title %>">
+        <%= image_tag "icons/trash.svg", class: "icon", alt: "Excluir" %>
+      </button>
+    </div>
+  </div>
+
+  <div class="task-tags">
+    <span class="tag tag-status tag-status-<%= task.status %>">
+        <%= I18n.t("activerecord.attributes.task.status.#{task.status}") %>
+    </span>
+
+    <span class="tag tag-priority tag-priority-<%= task.priority %>">
+        <%= I18n.t("activerecord.attributes.task.priority.#{task.priority}") %>
+    </span>
+
+    <% if overdue %>
+      <span class="tag tag-overdue"><%= I18n.t("tasks.overdue") %></span>
+    <% end %>
+  </div>
+
+  <div class="task-meta">
+  <span class="meta-item">
+    <%= image_tag "icons/calendar.svg", class: "meta-icon", alt: "Calendário" %>
+    <span>Criada em <%= task.created_at.strftime("%d/%m/%Y") %></span>
+  </span>
+
+  <% if task.due_date.present? %>
+    <span class="meta-item">
+      <%= image_tag "icons/clock.svg", class: "meta-icon", alt: "Relógio" %>
+      <span>Prazo: <%= task.due_date.strftime("%d/%m/%Y") %></span>
+    </span>
+  <% end %>
+</div>
+
+</div>

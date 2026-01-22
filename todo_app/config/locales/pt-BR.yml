@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    attributes:
+      task:
+        status:
+          pending: "Pendente"
+          in_progress: "Em andamento"
+          completed: "Concluída"
+        priority:
+          low: "Baixa"
+          medium: "Média"
+          high: "Alta"
+  tasks:
+    overdue: "Em atraso"

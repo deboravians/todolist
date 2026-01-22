@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     @task = @list.tasks.new(task_params)
 
     if @task.save
-      redirect_to [@board, @list, @task], notice: "Tarefa criada com sucesso."
+      redirect_to board_path(@board), notice: "Tarefa criada com sucesso."
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to [@board, @list, @task], notice: "Tarefa atualizada com sucesso."
+      redirect_to board_path(@board), notice: "Tarefa atualizada com sucesso."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to board_list_tasks_path(@board, @list), notice: "Tarefa excluída com sucesso."
+    redirect_to board_path(@board), notice: "Tarefa excluída com sucesso."
   end
 
   private
@@ -56,6 +56,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description)
+    params.require(:task).permit(:title, :description, :status, :priority, :due_date)
   end
 end
