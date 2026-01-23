@@ -20,4 +20,16 @@
     Ainda não tem uma conta?
     <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "auth-link" %>
   </div>
+
+  <div class="auth-divider">
+    <span>ou</span>
+  </div>
+
+  <%= button_to user_google_oauth2_omniauth_authorize_path,
+                method: :post,
+                data: { turbo: false },
+                class: "auth-social-btn auth-social-btn--google" do %>
+    <%= image_tag "icons/google.svg", class: "auth-social-icon", alt: "Google" %>
+    <span>Entrar com Google</span>
+  <% end %>
 </div>
