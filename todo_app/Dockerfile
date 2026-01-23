@@ -13,9 +13,4 @@ RUN bundle install
 
 COPY . .
 
-ENV RAILS_ENV=production
-ARG SECRET_KEY_BASE=dummy
-ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
-RUN bundle exec rails assets:precompile
-
-CMD ["bash", "-c", "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}"]
+CMD ["bash", "-c", "rm -f tmp/pids/server.pid && ([ -d public/assets ] || bundle exec rails assets:precompile) && bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}"]
