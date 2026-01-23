@@ -6,14 +6,12 @@ class StatusController < ApplicationController
 
     @overdue_tasks = tasks.overdue
 
-    @pending_tasks =
-      tasks.pending
-           .where("due_date IS NULL OR due_date >= ?", Date.current)
+    @pending_tasks = tasks.pending_tasks
+                         .where("due_date IS NULL OR DATE(due_date) >= ?", Date.current)
 
-    @in_progress_tasks =
-      tasks.in_progress
-           .where("due_date IS NULL OR due_date >= ?", Date.current)
+    @in_progress_tasks = tasks.in_progress_tasks
+                          .where("due_date IS NULL OR DATE(due_date) >= ?", Date.current)
 
-    @completed_tasks = tasks.completed
+    @completed_tasks = tasks.completed_tasks
   end
 end

@@ -42,7 +42,7 @@ document.addEventListener("click", (e) => {
         document.getElementById("edit-task-description").value = description || "";
         document.getElementById("edit-task-status").value = status || "pending";
         document.getElementById("edit-task-priority").value = priority || "low";
-        document.getElementById("edit-task-due-date").value = dueDate ? dueDate : "";
+        document.getElementById("edit-task-due-date").value = editBtn.dataset.dueDate || "";
 
         openDialog("modal-edit-task");
         return;

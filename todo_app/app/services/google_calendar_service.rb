@@ -52,7 +52,7 @@ class GoogleCalendarService
 
     client = authorized_client
     client.delete_event("primary", task.google_event_id)
-    task.update(google_event_id: nil)
+
   rescue Google::Apis::Error => e
     Rails.logger.error "Erro ao excluir evento: #{e.message}"
   end
