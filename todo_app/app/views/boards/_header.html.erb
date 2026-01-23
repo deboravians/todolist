@@ -1,0 +1,25 @@
+<div class="board-header">
+  <div class="board-header-left">
+    <%= link_to boards_path, class: "btn btn-light" do %>
+      <%= image_tag "icons/back.svg", class: "icon", alt: "" %>
+      Voltar
+    <% end %>
+
+    <h1 class="board-title"><%= board.title %></h1>
+  </div>
+
+  <div class="board-header-right">
+    <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-red" do %>
+      <%= image_tag "icons/logout.svg", class: "icon", alt: "Sair" %>
+      Sair
+    <% end %>
+  </div>
+</div>
+
+<div class="board-actions">
+  <button type="button" class="btn btn-orange" data-open-create-list data-board-id="<%= board.id %>">
+    <%= image_tag "icons/plus.svg", class: "icon", alt: "" %>
+    Nova Lista
+  </button>
+</div>
+

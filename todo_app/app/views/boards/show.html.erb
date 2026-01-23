@@ -1,0 +1,18 @@
+<div class="page">
+  <%= render "boards/header", board: @board %>
+
+  <% if @lists.blank? %>
+    <div class="empty-state">
+      <p>Este quadro ainda não tem listas. Crie uma lista para começar a adicionar tarefas!</p>
+    </div>
+  <% else %>
+    <div class="lists-grid">
+      <% @lists.each do |list| %>
+        <%= render "lists/card", board: @board, list: list %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= render "lists/modals", board: @board %>
+  <%= render "tasks/modals", board: @board %>
+</div>

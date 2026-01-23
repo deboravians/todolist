@@ -1,0 +1,23 @@
+pt-BR:
+  devise:
+    failure:
+      unauthenticated: "Você precisa entrar ou se cadastrar antes de continuar."
+      invalid: "E-mail ou senha inválidos."
+      user:
+        unauthenticated: "Você precisa entrar ou se cadastrar antes de continuar."
+        invalid: "E-mail ou senha inválidos."
+
+  activerecord:
+    attributes:
+      task:
+        status:
+          pending: "Pendente"
+          in_progress: "Em andamento"
+          completed: "Concluída"
+        priority:
+          low: "Baixa"
+          medium: "Média"
+          high: "Alta"
+
+  tasks:
+    overdue: "Em atraso"

@@ -1,0 +1,7 @@
+<h1><%= @task.title %></h1>
+
+<p><%= @task.description %></p>
+
+<p>
+  <%= link_to "Voltar", board_list_tasks_path(@board, @list) %>
+</p>
