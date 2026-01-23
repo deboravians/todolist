@@ -1,1 +1,3 @@
-/* Application styles */
+@import "base/application";
+@import "components/application";
+@import "features/application";
