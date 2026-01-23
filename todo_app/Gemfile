@@ -67,6 +67,10 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :development, :test do
+  gem "dotenv-rails"
+end
+
 gem "omniauth-google-oauth2"
 gem "google-apis-calendar_v3"
 gem "signet"
